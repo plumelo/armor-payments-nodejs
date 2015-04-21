@@ -1,0 +1,19 @@
+{
+  "name": "armor-payments",
+  "version": "0.1.0",
+  "description": "Node.js client for Armor Payments",
+  "author": "Adam Ever-Hadani",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/globality-corp/armory-payments-nodejs.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "main": "./lib",
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "mocha": "^2.2.4"
+  }
+}
