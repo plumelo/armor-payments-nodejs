@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/globality-corp/armory-payments-nodejs.git"
+    "url": "https://github.com/globality-corp/armor-payments-nodejs.git"
   },
   "scripts": {
     "test": "mocha"
