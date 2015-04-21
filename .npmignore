@@ -4,6 +4,9 @@ doc/
 examples/
 test/
 
+# CoffeeScript source
+src/
+
 # Mac OS X
 .DS_Store
 

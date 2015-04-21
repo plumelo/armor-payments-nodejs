@@ -9,11 +9,16 @@
     "url": "https://github.com/globality-corp/armor-payments-nodejs.git"
   },
   "scripts": {
-    "test": "mocha"
+    "prepublish": "coffee -o lib/ src/",
+    "test": "grunt"
   },
   "main": "./lib",
   "devDependencies": {
     "chai": "^2.2.0",
+    "coffee-script": "^1.9.2",
+    "grunt": "^0.4.5",
+    "grunt-contrib-coffee": "^0.13.0",
+    "grunt-mocha-test": "^0.12.7",
     "mocha": "^2.2.4"
   }
 }
