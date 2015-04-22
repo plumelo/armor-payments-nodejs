@@ -1,7 +1,6 @@
-# global describe, it, expect
-
 expect = require('chai').expect
 armorPayments = require('../lib')
+
 
 describe 'armor-payments', ->
 
