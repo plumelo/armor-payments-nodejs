@@ -5,7 +5,7 @@ Authenticator = require('../../lib').Authenticator
 Orders = require('../../lib/api/orders')
 
 
-describe Orders, ->
+describe "Orders", ->
   authenticator = new Authenticator('my-api-key', 'my-secret-code')
   host = 'https://sandbox.armorpayments.com'
   orders = new Orders(host, authenticator, '/accounts/1234')

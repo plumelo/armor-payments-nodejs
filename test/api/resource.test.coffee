@@ -6,7 +6,7 @@ Authenticator = require('../../lib').Authenticator
 Resource = require('../../lib/api/resource')
 
 
-describe 'Resource', ->
+describe "Resource", ->
   authenticator = new Authenticator('my-api-key', 'my-secret-code')
   host = 'https://sandbox.armorpayments.com'
   uriRoot = '/wibble/123'

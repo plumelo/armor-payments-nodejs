@@ -2,13 +2,12 @@ nock = require('nock')
 should = require('chai').should()
 sinon = require('sinon')
 Authenticator = require('../../lib').Authenticator
-Accounts = require('../../lib/api/accounts')
+Offers = require('../../lib/api/offers')
 
-
-describe "Accounts", ->
+describe "Offers", ->
   authenticator = new Authenticator('my-api-key', 'my-secret-code')
   host = 'https://sandbox.armorpayments.com'
-  accounts = new Accounts(host, authenticator, '')
+  offers = new Offers(host, authenticator, '/accounts/1234')
 
   # Sandbox for Sinon spies
   sandbox = null
@@ -19,27 +18,19 @@ describe "Accounts", ->
   afterEach ->
     sandbox.restore()
 
-  describe '#uri', ->
-    it "returns '/accounts' if given no id", ->
-      accounts.uri().should.equal('/accounts')
-
-    it "returns '/accounts/:id' if given an id", ->
-      accounts.uri(456).should.equal('/accounts/456')
-
-  describe '#create', ->
-
-    it "makes POST with /accounts and JSONified data", (done) ->
+  describe "#update", ->
+    it "makes POST with the right uri and JSONified data", (done) ->
       nock('https://sandbox.armorpayments.com')
-        .post('/accounts')
+        .post('/accounts/1234/offers/90')
         .reply(201)
-      spy = sandbox.spy(accounts, 'request')
+      spy = sandbox.spy(offers, 'request')
 
-      accounts.create({'name': 'Bobby Lee'})
+      offers.update(90, {'name': 'Bobby Lee'})
         .then (response) ->
           callargs = spy.getCall(0).args
           callargs[0].should.equal('post')
           callargs[1].should.include(
-            uri: '/accounts'
+            uri: '/accounts/1234/offers/90'
             body: '{"name":"Bobby Lee"}'
           )
           done()
