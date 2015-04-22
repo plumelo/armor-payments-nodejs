@@ -15,7 +15,7 @@ class Resource
   # If possible, parse the JSON
   request: (method, params) ->
     response = @connection[method](params)
-    if response.getHeader('Content-Type') =~ /json/i
+    if response.getHeader('Content-Type').match /json/i
       response.body = JSON.parse response.body
     response
 

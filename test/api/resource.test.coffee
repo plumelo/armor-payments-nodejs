@@ -1,8 +1,8 @@
 should = require('chai').should()
 sinon = require('sinon')
 timekeeper = require('timekeeper')
-Authenticator = require('../lib').Authenticator
-Resource = require('../lib').Resource
+Authenticator = require('../../lib').Authenticator
+Resource = require('../../lib/api/resource')
 
 
 describe 'Resource', ->
@@ -13,23 +13,23 @@ describe 'Resource', ->
   # let(:successful_response) { Excon::Response.new(status: 200, body: '{'whee':42}', headers: { 'Content-Type' => 'application/json' })
 
   describe '#uri', ->
-    it 'returns '/%{uri_root}/resource_name' if given no id', ->
-      resource.uri.should.equal('/wibble/123/resource')
+    it 'returns \'/%{uri_root}/resource_name\' if given no id', ->
+      resource.uri().should.equal('/wibble/123/resource')
 
-    it 'returns '/%{uri_root}/resource_name/:id' if given an id', ->
+    it 'returns \'/%{uri_root}/resource_name/:id\' if given an id', ->
       resource.uri(456).should.equal('/wibble/123/resource/456')
 
   describe '#request', ->
     context 'on a response with a JSON body', ->
       it 'returns the parsed JSON body', ->
-        resource.connection.stub(:get).and_return(successful_response)
+        resource.connection().stub('get').and_return(successful_response)
         response = resource.request('get', {})
         response.body.should.eql({ 'whee': 42 })
 
     context 'on a response without JSON', ->
       it 'returns the full response object', ->
         failed_response = Excon::Response.new(status: 502, body: 'Gateway Timeout')
-        resource.connection.stub(:get).and_return(failed_response)
+        resource.connection.stub('get').and_return(failed_response)
         response = resource.request('get', {})
         response.body.should.equal('Gateway Timeout')
 
@@ -37,7 +37,7 @@ describe 'Resource', ->
     describe '#all', ->
       it 'queries the host for all of the resources, with approprate headers', ->
         timekeeper.freeze new Date("2014-02-22T17:00:00Z")
-        resource.connection.should_receive(:get).with({
+        resource.connection.should_receive('get').with({
           path: '/wibble/123/resource',
           headers: {
             'X_ARMORPAYMENTS_APIKEY': 'my-api-key'
@@ -51,7 +51,7 @@ describe 'Resource', ->
     describe '#get', ->
       it 'queries the host for a specific resource, with approprate headers', ->
         timekeeper.freeze new Date("2014-02-22T17:00:00Z")
-        resource.connection.should_receive(:get).with({
+        resource.connection.should_receive('get').with({
           path: '/wibble/123/resource/456',
           headers: {
             'X_ARMORPAYMENTS_APIKEY': 'my-api-key'
