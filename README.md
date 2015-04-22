@@ -4,7 +4,7 @@ This is intended to be a clean, idiomatic client for the [Armor Payments API](ht
 This will handle generating the authenticated headers and constructing the properly nested request URI, as well as parsing any response JSON for you.
 
 [![Circle CI](https://circleci.com/gh/globality-corp/armor-payments-nodejs/tree/develop.svg?style=svg)](https://circleci.com/gh/globality-corp/armor-payments-nodejs/tree/develop)
-
+[![npm version](https://badge.fury.io/js/armor-payments.svg)](http://badge.fury.io/js/armor-payments)
 
 ## Installation
 
