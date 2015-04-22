@@ -38,6 +38,8 @@ We use CoffeeScript for development. The source files are under *src* and the te
 
     $ grunt
 
+Features branching and release management are handled using [git-flow](https://github.com/nvie/gitflow), and active development is always done on the *develop* branch.
+
 
 ## Contributing
 
