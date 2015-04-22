@@ -7,11 +7,11 @@ Authenticator = require('../authenticator')
 
 class API
 
-  constructor: (apiKey, apiSecret, @sandbox = False) ->
+  constructor: (apiKey, apiSecret, @sandbox = false) ->
     @authenticator = new Authenticator(apiKey, apiSecret)
 
   armorHost: ->
-    "https://#{@sandbox ? 'sandbox' : 'api'}.armorpayments.com"
+    "https://#{if @sandbox then 'sandbox' else 'api'}.armorpayments.com"
 
   accounts: ->
     @accounts ||= Accounts.new(@armorHost(), @authenticator, '')
