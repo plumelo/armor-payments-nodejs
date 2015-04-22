@@ -6,7 +6,7 @@ Authenticator = require('../../lib').Authenticator
 Resource = require('../../lib/api/resource')
 
 
-describe "Resource", ->
+describe 'Resource', ->
   authenticator = new Authenticator('my-api-key', 'my-secret-code')
   host = 'https://sandbox.armorpayments.com'
   uriRoot = '/wibble/123'
@@ -26,10 +26,10 @@ describe "Resource", ->
     sandbox.restore()
 
   describe '#uri', ->
-    it 'returns \'/%{uri_root}/resource_name\' if given no id', ->
+    it "returns '/%{uri_root}/resource_name' if given no id", ->
       resource.uri().should.equal('/wibble/123/resource')
 
-    it 'returns \'/%{uri_root}/resource_name/:id\' if given an id', ->
+    it "returns '/%{uri_root}/resource_name/:id' if given an id", ->
       resource.uri(456).should.equal('/wibble/123/resource/456')
 
   describe '#request', ->
@@ -61,7 +61,7 @@ describe "Resource", ->
   context 'smoketest', ->
     describe '#all', ->
       it 'queries the host for all of the resources, with approprate headers', (done) ->
-        timekeeper.freeze new Date("2014-02-22T17:00:00Z")
+        timekeeper.freeze new Date('2014-02-22T17:00:00Z')
         nock('https://sandbox.armorpayments.com')
           .get('/wibble/123/resource')
           .reply(200, {
@@ -88,7 +88,7 @@ describe "Resource", ->
 
     describe '#get', ->
       it 'queries the host for a specific resource, with approprate headers', (done) ->
-        timekeeper.freeze new Date("2014-02-22T17:00:00Z")
+        timekeeper.freeze new Date('2014-02-22T17:00:00Z')
         nock('https://sandbox.armorpayments.com')
           .get('/wibble/123/resource/456')
           .reply(200, {

@@ -5,7 +5,7 @@ Authenticator = require('../../lib').Authenticator
 Accounts = require('../../lib/api/accounts')
 
 
-describe "Accounts", ->
+describe 'Accounts', ->
   authenticator = new Authenticator('my-api-key', 'my-secret-code')
   host = 'https://sandbox.armorpayments.com'
   accounts = new Accounts(host, authenticator, '')
@@ -28,7 +28,7 @@ describe "Accounts", ->
 
   describe '#create', ->
 
-    it "makes POST with /accounts and JSONified data", (done) ->
+    it 'makes POST with /accounts and JSONified data', (done) ->
       nock('https://sandbox.armorpayments.com')
         .post('/accounts')
         .reply(201)

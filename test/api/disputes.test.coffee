@@ -5,12 +5,12 @@ Authenticator = require('../../lib').Authenticator
 Disputes = require('../../lib/api/disputes')
 
 
-describe "Disputes", ->
+describe 'Disputes', ->
   authenticator = new Authenticator('my-api-key', 'my-secret-code')
   host = 'https://sandbox.armorpayments.com'
   disputes = new Disputes(host, authenticator, '/accounts/1234/orders/56')
 
-  describe "#uri", ->
+  describe '#uri', ->
     it "returns '/accounts/:aid/orders/:oid/disputes' if given no id", ->
       disputes.uri().should.equal('/accounts/1234/orders/56/disputes')
 
