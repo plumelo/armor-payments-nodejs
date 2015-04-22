@@ -15,7 +15,8 @@ class API
     "https://#{if @sandbox then 'sandbox' else 'api'}.armorpayments.com"
 
   accounts: ->
-    @accounts ||= new Accounts(@armorHost(), @authenticator, '')
+    @_accounts ||= new Accounts(@armorHost(), @authenticator, '')
+    @_accounts
 
   orders: (accountId) ->
     Orders.new(@armorHost(), @authenticator, @accounts().uri(accountId))
