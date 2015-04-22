@@ -1,8 +1,16 @@
+request = require('request-promise')
+
+
 class Resource
   constructor: (@host, @authenticator, @uriRoot) ->
+    @client = request.defaults(
+      baseUrl: @host
+      headers: { 'Accept': 'application/json' }
+      resolveWithFullResponse: true
+    )
 
-  connection: ->
-    @connection ||= request.defaults(baseUrl: host, headers: { 'Accept': 'application/json' })
+  #connection: ->
+  #  @client
 
   resourceName: ->
     @constructor.name.toLowerCase()
@@ -12,20 +20,21 @@ class Resource
     base += "/#{objectId}" if objectId
     base
 
-  # If possible, parse the JSON
   request: (method, params) ->
-    response = @connection[method](params)
-    if response.getHeader('Content-Type').match /json/i
-      response.body = JSON.parse response.body
-    response
+    @client[method](params)
+      .then (response) ->
+        if response.headers['content-type']?.match /json/i
+          # If possible, parse the JSON
+          response.body = JSON.parse response.body
+        response
 
   all: ->
-    headers = @authenticator.secureHeaders 'get', uri
-    @request 'get', { path: uri, headers: headers }
+    headers = @authenticator.secureHeaders 'get', @uri()
+    @request 'get', { uri: @uri(), headers: headers }
 
   get: (objectId) ->
-    headers = @authenticator.secureHeaders 'get', uri(objectId)
-    @request 'get', { path: @uri(objectId), headers: headers }
+    headers = @authenticator.secureHeaders 'get', @uri(objectId)
+    @request 'get', { uri: @uri(objectId), headers: headers }
 
 
 module.exports = Resource

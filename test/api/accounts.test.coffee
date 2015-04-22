@@ -1,3 +1,4 @@
+nock = require('nock')
 should = require('chai').should()
 sinon = require('sinon')
 Authenticator = require('../../lib').Authenticator
@@ -9,6 +10,15 @@ describe 'Accounts', ->
   host = 'https://sandbox.armorpayments.com'
   accounts = new Accounts(host, authenticator, '')
 
+  # Sandbox for Sinon spies
+  sandbox = null
+
+  beforeEach ->
+    sandbox = sinon.sandbox.create()
+
+  afterEach ->
+    sandbox.restore()
+
   describe '#uri', ->
     it "returns '/accounts' if given no id", ->
       accounts.uri().should.equal('/accounts')
@@ -18,6 +28,18 @@ describe 'Accounts', ->
 
   describe '#create', ->
 
-    it "makes POST with /accounts and JSONified data", ->
-      accounts.should_receive('request').with('post', hash_including(path: '/accounts', body: '{"name":"Bobby Lee"}'))
-      accounts.create({ 'name': 'Bobby Lee'})
+    it "makes POST with /accounts and JSONified data", (done) ->
+      nock('https://sandbox.armorpayments.com')
+        .post('/accounts')
+        .reply(201)
+      spy = sandbox.spy(accounts, 'request')
+
+      accounts.create({'name': 'Bobby Lee'})
+        .then (response) ->
+          callargs = spy.getCall(0).args
+          callargs[0].should.equal('post')
+          callargs[1].should.include(
+            uri: '/accounts'
+            body: '{"name":"Bobby Lee"}'
+          )
+          done()

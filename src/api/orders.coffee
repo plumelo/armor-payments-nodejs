@@ -5,11 +5,11 @@ class Orders extends Resource
 
   create: (data) ->
     headers = @authenticator.secureHeaders 'post', @uri()
-    @request 'post', { path: @uri(), headers: headers, body: JSON.generate(data) }
+    @request 'post', { uri: @uri(), headers: headers, body: JSON.stringify data }
 
   update: (orderId, data) ->
     headers = @authenticator.secureHeaders 'post', @uri(orderId)
-    @request 'post', { path: @uri(orderId), headers: headers, body: JSON.generate(data) }
+    @request 'post', { uri: @uri(orderId), headers: headers, body: JSON.stringify data }
 
   documents: (orderId) ->
     new Documents(@host, @authenticator, @uri(orderId))
