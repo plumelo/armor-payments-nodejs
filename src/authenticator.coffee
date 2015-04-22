@@ -1,5 +1,6 @@
 crypto = require('crypto')
 
+
 class Authenticator
 
   constructor: (@apiKey, @apiSecret) ->
