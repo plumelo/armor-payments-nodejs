@@ -71,6 +71,7 @@ describe "Resource", ->
 
         resource.all()
           .then (response) ->
+            # coffeelint: disable=max_line_length
             sinon.assert.calledWithExactly(spy,
               uri: '/wibble/123/resource'
               headers: {
@@ -79,6 +80,7 @@ describe "Resource", ->
                 'X-ARMORPAYMENTS-SIGNATURE': 'ec41629dc204b449c71bf89d1be4630f5353e37869197f5a926539f6fc676ebcccdb5426fb3f01a01fa7dc9551d38d152e41294a5147b15e460d09ff60cf1562'
               }
             )
+            # coffeelint: enable=max_line_length
             response.body.should.eql(JSON.parse successfulResponse.body)
             response.statusCode.should.equal(successfulResponse.status)
             response.headers.should.eql(successfulResponse.headers)
@@ -96,6 +98,7 @@ describe "Resource", ->
 
         resource.get(456)
           .then (response) ->
+            # coffeelint: disable=max_line_length
             sinon.assert.calledWithExactly(spy,
               uri: '/wibble/123/resource/456'
               headers: {
@@ -104,6 +107,7 @@ describe "Resource", ->
                 'X-ARMORPAYMENTS-SIGNATURE': '48886620cfebb95ffd9ee351f4f68d4f103a8f4bdc0e3301f7ee709ec2cf3c19588ae1b67aa8ee38305de802651fb10093cf1af40f467ac936185d551a58a844'
               }
             )
+            # coffeelint: enable=max_line_length
             response.body.should.eql(JSON.parse successfulResponse.body)
             response.statusCode.should.equal(successfulResponse.status)
             response.headers.should.eql(successfulResponse.headers)
