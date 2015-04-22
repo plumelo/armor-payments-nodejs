@@ -1,6 +1,3 @@
 machine:
   node:
-    version:
-        - '0.12.0'
-        - '0.10.34'
-        - 'iojs-v1.3.0'
+    version: '0.12.0'
