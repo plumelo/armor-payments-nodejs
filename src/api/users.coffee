@@ -1,3 +1,4 @@
+Authentications = require('./authentications')
 Resource = require('./resource')
 
 
