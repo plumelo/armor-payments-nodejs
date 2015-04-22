@@ -1,6 +1,6 @@
 {
   "name": "armor-payments",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node.js client for Armor Payments",
   "author": "Adam Ever-Hadani",
   "license": "MIT",

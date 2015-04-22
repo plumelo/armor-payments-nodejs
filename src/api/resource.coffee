@@ -9,9 +9,6 @@ class Resource
       resolveWithFullResponse: true
     )
 
-  #connection: ->
-  #  @client
-
   resourceName: ->
     @constructor.name.toLowerCase()
 

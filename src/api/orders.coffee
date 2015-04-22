@@ -1,4 +1,10 @@
+Documents = require('./documents')
+Disputes = require('./disputes')
+Notes = require('./notes')
+OrderEvents = require('./orderevents')
+PaymentInstructions = require('./paymentinstructions')
 Resource = require('./resource')
+Shipments = require('./shipments')
 
 
 class Orders extends Resource
