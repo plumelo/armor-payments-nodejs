@@ -11,13 +11,30 @@ To install using npm and add to your application's dependencies:
 
 ## Usage
 
-See the [Ruby Client](https://github.com/Armor-Payments/armor_payments_ruby) for detailed usage examples. We follow the exact implementation in the Node.js version.
+The Armor Payments API is REST-ish and nested, so the client relies on chaining. We use (request-promise)[https://www.npmjs.com/package/request-promise] to return a Promise for all operations resulting in an API request, with the added nice-ness that we've parsed the JSON response body for you if possible.
+
+
+```javascript
+var armorPayments = require('armor-payments');
+
+var client = new armorPayments.API('your-key', 'your-secret', shouldUseSandbox);
+
+// There are four top-level resources: accounts, users, orders, and shipmentcarriers
+// Querying users and orders requires an accountId
+client.accounts.all().then(function (response) {
+    // response.body contains parsed JSON object
+});
+```
+
+Fore more detailed usage examples, See the [Ruby client](https://github.com/Armor-Payments/armor_payments_ruby). We follow the exact conventions with only differences being the usage of camelCase instead of under_scores, and using Promises for handling responses as above.
+
 
 ## Developing
 
 We use CoffeeScript for development. The source files are under *src* and the tests are under *test*. To compile CoffeeScript into JavaScript and run tests, invoke Grunt:
 
     $ grunt
+
 
 ## Contributing
 
@@ -26,6 +43,7 @@ We use CoffeeScript for development. The source files are under *src* and the te
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
+
 
 ## License
 
