@@ -5,6 +5,7 @@ Orders = require('./orders')
 Users = require('./users')
 Authenticator = require('../authenticator')
 
+
 class API
 
   constructor: (apiKey, apiSecret, @sandbox = false) ->
@@ -14,7 +15,7 @@ class API
     "https://#{if @sandbox then 'sandbox' else 'api'}.armorpayments.com"
 
   accounts: ->
-    @accounts ||= Accounts.new(@armorHost(), @authenticator, '')
+    @accounts ||= new Accounts(@armorHost(), @authenticator, '')
 
   orders: (accountId) ->
     Orders.new(@armorHost(), @authenticator, @accounts().uri(accountId))
