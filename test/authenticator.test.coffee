@@ -23,7 +23,10 @@ describe 'Authenticator', ->
 
     it 'returns a SHA512 hash value', ->
       timekeeper.freeze new Date("2014-02-22T17:00:00Z")
-      authenticator.requestSignature('get', '/accounts').should.equal ('777990373678937074c1b357d632e0ea3439d0e834e573c03076ee557f526565f9ac2b38483b3e41024b96ec2644d60b4f70f0d9c760b2ebeb9827f9b335d069')
+      # coffeelint: disable=max_line_length
+      authenticator.requestSignature('get', '/accounts').should.equal \
+        '777990373678937074c1b357d632e0ea3439d0e834e573c03076ee557f526565f9ac2b38483b3e41024b96ec2644d60b4f70f0d9c760b2ebeb9827f9b335d069'
+      # coffeelint: enable=max_line_length
 
   describe '#secureHeaders', ->
     it 'returns a hash with the required headers in', ->
@@ -37,8 +40,10 @@ describe 'Authenticator', ->
 
     it 'assigns the correct value for each of the headers', ->
       timekeeper.freeze new Date("2014-02-22T17:00:00Z")
+      # coffeelint: disable=max_line_length
       authenticator.secureHeaders('get', '/accounts').should.eql(
         'X-ARMORPAYMENTS-APIKEY': 'my-api-key'
         'X-ARMORPAYMENTS-SIGNATURE':  '777990373678937074c1b357d632e0ea3439d0e834e573c03076ee557f526565f9ac2b38483b3e41024b96ec2644d60b4f70f0d9c760b2ebeb9827f9b335d069'
         'X-ARMORPAYMENTS-REQUESTTIMESTAMP': '2014-02-22T17:00:00Z'
       )
+      # coffeelint: enable=max_line_length
