@@ -11,7 +11,7 @@ describe Orders, ->
 
   describe "#uri", ->
     it "returns '/accounts/:aid/orders' if given no id", ->
-      orders.uri.should.equal('/accounts/1234/orders')
+      orders.uri().should.equal('/accounts/1234/orders')
 
     it "returns '/accounts/:aid/orders/:order_id' if given an id", ->
       orders.uri(456).should.equal('/accounts/1234/orders/456')

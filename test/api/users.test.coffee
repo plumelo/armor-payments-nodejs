@@ -11,7 +11,7 @@ describe Users, ->
 
   describe "#uri", ->
     it "returns '/users' if given no id", ->
-      users.uri.should.equal('/accounts/1234/users')
+      users.uri().should.equal('/accounts/1234/users')
 
     it "returns '/users/:id' if given an id", ->
       users.uri(456).should.equal('/accounts/1234/users/456')
