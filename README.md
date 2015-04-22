@@ -21,12 +21,12 @@ var client = new armorPayments.API('your-key', 'your-secret', shouldUseSandbox);
 
 // There are four top-level resources: accounts, users, orders, and shipmentcarriers
 // Querying users and orders requires an accountId
-client.accounts.all().then(function (response) {
+client.accounts().all().then(function (response) {
     // response.body contains parsed JSON object
 });
 ```
 
-Fore more detailed usage examples, See the [Ruby client](https://github.com/Armor-Payments/armor_payments_ruby). We follow the exact conventions with only differences being the usage of camelCase instead of under_scores, and using Promises for handling responses as above.
+Fore more detailed usage examples, See the [Ruby client](https://github.com/Armor-Payments/armor_payments_ruby). We follow the same API naming and method chaining conventions with only differences being the usage of camelCase instead of under_scores, and using Promises for handling responses as above.
 
 
 ## Developing
