@@ -19,10 +19,10 @@ class API
     @_accounts
 
   orders: (accountId) ->
-    Orders.new(@armorHost(), @authenticator, @accounts().uri(accountId))
+    new Orders(@armorHost(), @authenticator, @accounts().uri(accountId))
 
   users: (accountId) ->
-    Users.new(@armorHost(), @authenticator, @accounts().uri(accountId))
+    new Users(@armorHost(), @authenticator, @accounts().uri(accountId))
 
 
 module.exports = API
