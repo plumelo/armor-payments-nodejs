@@ -1,3 +1,9 @@
+## 0.1.3 (???)
+
+Bufixes:
+
+  - Fixed errornous usage of JSON.generate in Users.update(), Fixes Issue #1
+
 ## 0.1.2 (April 23, 2015)
 
 Bugfixes:
