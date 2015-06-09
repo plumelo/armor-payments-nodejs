@@ -1,10 +1,8 @@
-crypto = require('crypto')
-
 Accounts = require('./accounts')
 Orders = require('./orders')
 Users = require('./users')
 Authenticator = require('../authenticator')
-
+ShipmentCarriers = require('./shipmentcarriers')
 
 class API
 
@@ -24,5 +22,8 @@ class API
   users: (accountId) ->
     new Users(@armorHost(), @authenticator, @accounts().uri(accountId))
 
+  shipmentcarriers: ->
+    @_shipmentcarriers ||= new ShipmentCarriers(@armorHost(), @authenticator, '')
+    @_shipmentcarriers
 
 module.exports = API
