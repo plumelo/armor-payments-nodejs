@@ -1,12 +1,14 @@
-## 0.1.4 (???)
+## 0.1.4 (June 9, 2015)
 
-This release merges Pull Request #2 (https://github.com/globality-corp/armor-payments-nodejs/pull/2)
+This release merges Pull Request #2 (https://github.com/globality-corp/armor-payments-nodejs/pull/2) and updates README with
+instructions on building a release. Thanks @darthrevino for the PR!
 
 Features:
 
     - Adding a shipmentcarriers() method to the API.
     - Adding tests to the ShipmentCarriers class
     - Adding tests to the API to verify subresources are constructed correctly
+    - Updated README.md with instructions on releasing a package version
 
 ## 0.1.3 (June 9, 2015)
 
