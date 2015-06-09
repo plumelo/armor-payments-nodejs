@@ -68,10 +68,12 @@ Making a release involves the following steps:
 
         $ npm version --no-git-tag-version [major|minor|patch|...]
 
-1. Commit and finalize release:
+1. Commit and finalize release, and push to remote:
 
         $ git commit -a -m "bumped version for release"
         $ git flow release finish v0.2.0
+        $ git push --all
+        $ git push --tags
 
 1. Push to NPM:
 
