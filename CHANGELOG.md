@@ -1,6 +1,16 @@
+## 0.1.4 (???)
+
+This release merges Pull Request #2 (https://github.com/globality-corp/armor-payments-nodejs/pull/2)
+
+Features:
+
+    - Adding a shipmentcarriers() method to the API.
+    - Adding tests to the ShipmentCarriers class
+    - Adding tests to the API to verify subresources are constructed correctly
+
 ## 0.1.3 (June 9, 2015)
 
-Bufixes:
+Bugfixes:
 
   - Fixed errornous usage of JSON.generate in Users.update(), Fixes Issue #1
 

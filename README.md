@@ -55,6 +55,29 @@ Features branching and release management are handled using
 done on the *develop* branch.
 
 
+## Releasing a Version
+
+Making a release involves the following steps:
+
+1. Update CHANGELOG.md with relevant changes
+1. Create new release branch, for example:
+
+        $ git flow release start v0.2.0
+
+1. Bump version:
+
+        $ npm version --no-git-tag-version [major|minor|patch|...]
+
+1. Commit and finalize release:
+
+        $ git commit -a -m "bumped version for release"
+        $ git flow release finish v0.2.0
+
+1. Push to NPM:
+
+        $ npm publish
+
+
 ## Contributing
 
 1. Fork it
