@@ -88,6 +88,11 @@ Making a release involves the following steps:
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
 
+**Find this project useful?** Help us make it even better by submitting any bugs or improvement suggestions you have
+as GitHub Issues and Pull Requests.
+
+**Like what we're doing?** There's much more Node.js and CoffeeScript goodness where this came from! drop us a line if you wanna chat about potential career opportunities at [Globality](http://www.globality.com): careers at globality dot com
+
 
 ## License
 
